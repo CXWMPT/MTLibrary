@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,25 +46,21 @@
     <Compile Include="BasicDataType\BoolHelper.cs" />
     <Compile Include="BasicDataType\ByteHelper.cs" />
     <Compile Include="BasicDataType\ConstantHelper.cs" />
-    <Compile Include="BasicDataType\DataTableHelper.cs" />
-    <Compile Include="BasicDataType\DateTimeHelper.cs" />
-    <Compile Include="BasicDataType\DecimalHelper.cs" />
-    <Compile Include="BasicDataType\DoubleHelper.cs" />
-    <Compile Include="BasicDataType\EntityHelper.cs" />
     <Compile Include="BasicDataType\EnumHelper.cs" />
-    <Compile Include="BasicDataType\FloatHelper.cs" />
-    <Compile Include="BasicDataType\IntHelper.cs" />
-    <Compile Include="BasicDataType\ListHelper.cs" />
-    <Compile Include="BasicDataType\LongHelper.cs" />
-    <Compile Include="BasicDataType\StringHelper.cs" />
-    <Compile Include="EnumConstant\NTDByteDataFormatEnum.cs" />
-    <Compile Include="EnumConstant\NTDConditionalTypeEnum.cs" />
-    <Compile Include="EnumConstant\NTDDBTypeEnum.cs" />
-    <Compile Include="EnumConstant\NTDLogTypeEnum.cs" />
-    <Compile Include="EnumConstant\NTDMassUnitEnum.cs" />
-    <Compile Include="EnumConstant\NTDMsgTypeEnum.cs" />
-    <Compile Include="EnumConstant\NTDPageEnum.cs" />
+    <Compile Include="EncryptionMode\AESHelper.cs" />
+    <Compile Include="EncryptionMode\DESHelper.cs" />
+    <Compile Include="EncryptionMode\MD5Helper.cs" />
+    <Compile Include="EnumConstant\MTByteDataFormatEnum.cs" />
+    <Compile Include="EnumConstant\MTConditionalTypeEnum.cs" />
+    <Compile Include="EnumConstant\MTDBTypeEnum.cs" />
+    <Compile Include="EnumConstant\MTLogTypeEnum.cs" />
+    <Compile Include="EnumConstant\MTMassUnitEnum.cs" />
+    <Compile Include="EnumConstant\MTMsgTypeEnum.cs" />
+    <Compile Include="EnumConstant\MTPageEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Bean\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

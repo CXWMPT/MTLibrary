@@ -1,0 +1,5 @@
+D:\CShap\MTLibrary\obj\Debug\MTLibrary.csproj.CoreCompileInputs.cache
+D:\CShap\MTLibrary\bin\Debug\MTLibrary.dll
+D:\CShap\MTLibrary\bin\Debug\MTLibrary.pdb
+D:\CShap\MTLibrary\obj\Debug\MTLibrary.dll
+D:\CShap\MTLibrary\obj\Debug\MTLibrary.pdb
