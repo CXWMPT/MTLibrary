@@ -34,6 +34,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,7 +47,17 @@
     <Compile Include="BasicDataType\BoolHelper.cs" />
     <Compile Include="BasicDataType\ByteHelper.cs" />
     <Compile Include="BasicDataType\ConstantHelper.cs" />
+    <Compile Include="BasicDataType\DataTableHelper.cs" />
+    <Compile Include="BasicDataType\DateTimeHelper.cs" />
+    <Compile Include="BasicDataType\DecimalHelper.cs" />
+    <Compile Include="BasicDataType\DoubleHelper.cs" />
+    <Compile Include="BasicDataType\EntityHelper.cs" />
     <Compile Include="BasicDataType\EnumHelper.cs" />
+    <Compile Include="BasicDataType\FloatHelper.cs" />
+    <Compile Include="BasicDataType\IntHelper.cs" />
+    <Compile Include="BasicDataType\ListHelper.cs" />
+    <Compile Include="BasicDataType\LongHelper.cs" />
+    <Compile Include="BasicDataType\StringHelper.cs" />
     <Compile Include="EncryptionMode\AESHelper.cs" />
     <Compile Include="EncryptionMode\DESHelper.cs" />
     <Compile Include="EncryptionMode\MD5Helper.cs" />
@@ -57,10 +68,34 @@
     <Compile Include="EnumConstant\MTMassUnitEnum.cs" />
     <Compile Include="EnumConstant\MTMsgTypeEnum.cs" />
     <Compile Include="EnumConstant\MTPageEnum.cs" />
+    <Compile Include="Extend\BaseEvent.cs" />
+    <Compile Include="Extend\FormHelper.cs" />
+    <Compile Include="Extend\PageHelper.cs" />
+    <Compile Include="Extend\PrinterHelper.cs" />
+    <Compile Include="Extend\ReflectionHelper.cs" />
+    <Compile Include="Extend\RegularCheckHelper.cs" />
+    <Compile Include="Extend\UnitHelper.cs" />
+    <Compile Include="Extend\IpHelper.cs" />
+    <Compile Include="File\LogFileHelper.cs" />
+    <Compile Include="NTDMsg\MsgHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControl\PageControl\MTUC_Page_V1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControl\PageControl\MTUC_Page_V1.designer.cs">
+      <DependentUpon>MTUC_Page_V1.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Bean\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="UserControl\PageControl\MTUC_Page_V1.resx">
+      <DependentUpon>MTUC_Page_V1.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -3,30 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MTLibrary
 {
-    public class BoolHelper
+    public class FloatHelper
     {
+
         #region 
 
         /// <summary>
-        /// 将Object强转bool型
+        /// object转float
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public static bool Conversion(object o)
+        public static float Conversion(object o)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(o?.ToString())) return false;
-                return Convert.ToBoolean(o);
+                if (o==null) return 0;
+
+                return Convert.ToSingle(o);
             }
             catch
             {
-                return false;
+                return 0;
             }
         }
-        #endregion 
+       
+        #endregion
+
+     
+
     }
 }

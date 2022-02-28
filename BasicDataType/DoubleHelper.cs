@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MTLibrary
 {
-    public class BoolHelper
+    public class DoubleHelper
     {
-        #region 
+
+        #region
 
         /// <summary>
-        /// 将Object强转bool型
+        /// object转double
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public static bool Conversion(object o)
+        public static double Conversion(object o)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(o?.ToString())) return false;
-                return Convert.ToBoolean(o);
+                if (o==null) return 0;
+                return Convert.ToDouble(o);
             }
             catch
             {
-                return false;
+                return 0;
             }
         }
-        #endregion 
+
+        #endregion
+
+
     }
 }

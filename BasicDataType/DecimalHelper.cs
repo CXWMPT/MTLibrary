@@ -3,30 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace MTLibrary
 {
-    public class BoolHelper
+    public class DecimalHelper
     {
-        #region 
+
+        #region
 
         /// <summary>
-        /// 将Object强转bool型
+        /// 将object强转decimak
         /// </summary>
         /// <param name="o"></param>
         /// <returns></returns>
-        public static bool Conversion(object o)
+        public static decimal Conversion(object o)
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(o?.ToString())) return false;
-                return Convert.ToBoolean(o);
+                if (o==null) return 0;
+                return Convert.ToDecimal(o);
             }
             catch
             {
-                return false;
+                return 0;
             }
         }
-        #endregion 
+        #endregion
+
     }
 }
