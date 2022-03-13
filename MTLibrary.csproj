@@ -74,10 +74,11 @@
     <Compile Include="Extend\PrinterHelper.cs" />
     <Compile Include="Extend\ReflectionHelper.cs" />
     <Compile Include="Extend\RegularCheckHelper.cs" />
+    <Compile Include="Extend\SystemInfoHelper.cs" />
     <Compile Include="Extend\UnitHelper.cs" />
     <Compile Include="Extend\IpHelper.cs" />
     <Compile Include="File\LogFileHelper.cs" />
-    <Compile Include="NTDMsg\MsgHelper.cs" />
+    <Compile Include="Msg\MsgHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl\PageControl\MTUC_Page_V1.cs">
       <SubType>UserControl</SubType>

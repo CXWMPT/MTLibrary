@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="d77d1404-8ca8-4fef-b1d3-cb98400f4c43" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/MTLibrary.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MTLibrary.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/NTDMsg/MsgHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/MTLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/MTLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/MTLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/MTLibrary.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/MTLibrary.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/MTLibrary.csproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/MTLibrary.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/MTLibrary.csproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/MTLibrary.csproj.GenerateResource.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/MTLibrary.csproj.GenerateResource.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/MTLibrary.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/MTLibrary.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/MTLibrary.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/MTLibrary.pdb" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="25mTkHIrAoepgP42F7uHaVkq1Ae" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../javaproject/gitee/nmfs" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d77d1404-8ca8-4fef-b1d3-cb98400f4c43" name="Default Changelist" comment="" />
+      <created>1646131403532</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1646131403532</updated>
+      <workItem from="1646131406566" duration="38000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="271" key="FileChooserDialogImpl" timestamp="1646131440324">
+      <screen x="0" y="0" width="1920" height="1032" />
+    </state>
+    <state x="740" y="271" key="FileChooserDialogImpl/0.0.1920.1032@0.0.1920.1032" timestamp="1646131440324" />
+  </component>
+</project>

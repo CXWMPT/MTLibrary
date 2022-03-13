@@ -7,7 +7,7 @@ namespace MTLibrary
     /// </summary>
     public static class MsgHelper
     {
-     
+
         /// <summary>
         /// 信息提示弹出窗口（弹出框默认是倒计时60s）
         /// </summary>

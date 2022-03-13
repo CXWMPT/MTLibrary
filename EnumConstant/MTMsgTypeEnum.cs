@@ -12,10 +12,6 @@ namespace MTLibrary
     public enum NTDMsgTypeEnum
     {
         /// <summary>
-        ///  未知
-        /// </summary>
-        Unknow = 0,
-        /// <summary>
         /// 提示
         /// </summary>
         Info,
@@ -35,10 +31,6 @@ namespace MTLibrary
         /// 确认
         /// </summary>
         Comfirm,
-        /// <summary>
-        /// 带报警警告
-        /// </summary>
-        WarningWithAlarm,
 
     }
 }
