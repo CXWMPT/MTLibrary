@@ -58,6 +58,8 @@
     <Compile Include="BasicDataType\ListHelper.cs" />
     <Compile Include="BasicDataType\LongHelper.cs" />
     <Compile Include="BasicDataType\StringHelper.cs" />
+    <Compile Include="Bean\HttpResultMessage.cs" />
+    <Compile Include="Bean\WeightCoreBean.cs" />
     <Compile Include="EncryptionMode\AESHelper.cs" />
     <Compile Include="EncryptionMode\DESHelper.cs" />
     <Compile Include="EncryptionMode\MD5Helper.cs" />
@@ -70,6 +72,7 @@
     <Compile Include="EnumConstant\MTPageEnum.cs" />
     <Compile Include="Extend\BaseEvent.cs" />
     <Compile Include="Extend\FormHelper.cs" />
+    <Compile Include="Extend\MTKeyBoardHelper.cs" />
     <Compile Include="Extend\PageHelper.cs" />
     <Compile Include="Extend\PrinterHelper.cs" />
     <Compile Include="Extend\ReflectionHelper.cs" />
@@ -77,8 +80,13 @@
     <Compile Include="Extend\SystemInfoHelper.cs" />
     <Compile Include="Extend\UnitHelper.cs" />
     <Compile Include="Extend\IpHelper.cs" />
+    <Compile Include="File\ConfigFileHelper.cs" />
+    <Compile Include="File\FileHelper.cs" />
     <Compile Include="File\LogFileHelper.cs" />
-    <Compile Include="Msg\MsgHelper.cs" />
+    <Compile Include="File\MsgHelper.cs" />
+    <Compile Include="NetworkCommunications\AjaxHelper.cs" />
+    <Compile Include="NetworkCommunications\CheckNetStatusHelper.cs" />
+    <Compile Include="NetworkCommunications\SocketHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl\PageControl\MTUC_Page_V1.cs">
       <SubType>UserControl</SubType>
@@ -86,10 +94,9 @@
     <Compile Include="UserControl\PageControl\MTUC_Page_V1.designer.cs">
       <DependentUpon>MTUC_Page_V1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extend\WinApiHelper.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Bean\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>

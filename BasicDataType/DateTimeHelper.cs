@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Sockets;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace MTLibrary
@@ -14,14 +17,14 @@ namespace MTLibrary
         [StructLayout(LayoutKind.Sequential)]
         public struct SYSTEMTIME
         {
-            public ushort wYear;
-            public ushort wMonth;
-            public ushort wDayOfWeek;
-            public ushort wDay;
-            public ushort wHour;
-            public ushort wMinute;
-            public ushort wSecond;
-            public ushort wMilliseconds;
+            public ushort year;
+            public ushort month;
+            public ushort dayOfWeek;
+            public ushort day;
+            public ushort hour;
+            public ushort minute;
+            public ushort second;
+            public ushort milliseconds;
         }
         [DllImport("kernel32.dll", SetLastError = true)]
         public static extern bool SetSystemTime(ref SYSTEMTIME st);
@@ -54,12 +57,13 @@ namespace MTLibrary
             try
             {
                 SYSTEMTIME sysTime = new SYSTEMTIME();
-                sysTime.wYear = (ushort)dt.Year;
-                sysTime.wMonth = (ushort)dt.Month;
-                sysTime.wDay = (ushort)dt.Day;
-                sysTime.wHour = (ushort)dt.Hour;
-                sysTime.wMinute = (ushort)dt.Minute;
-                sysTime.wSecond = (ushort)dt.Second;
+                sysTime.year = (ushort)dt.Year;
+                sysTime.month = (ushort)dt.Month;
+                sysTime.dayOfWeek = (ushort)dt.DayOfWeek;
+                sysTime.day = (ushort)dt.Day;
+                sysTime.hour = (ushort)dt.Hour;
+                sysTime.minute = (ushort)dt.Minute;
+                sysTime.second = (ushort)dt.Second;
                 return SetSystemTime(ref sysTime);
             }
             catch (Exception)
@@ -69,7 +73,143 @@ namespace MTLibrary
         }
 
 
+        /// <summary>
+        /// 获取服务器时间
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <param name="msg"></param>
+        /// <returns></returns>
+        public static bool GetWebTime(string ntpServer, int port, out DateTime dt, out string msg)
+        {
+            dt = DateTime.Now;
+            msg = string.Empty;
+            try
+            {
+                ntpServer = "10.130.40.2 ";
+                // default ntp server
+                // const  string ntpServer ="ntp1.aliyun.com";
+                // string ntpServer = "ntp1.aliyun.com";
+                // NTP message size - 16 bytes of the digest (RFC 2030)
+                byte[] ntpData = new byte[48];
+                // Setting the Leap Indicator, Version Number and Mode values
+                ntpData[0] = 0x1B; // LI = 0 (no warning), VN = 3 (IPv4 only), Mode = 3 (Client Mode)
 
+                IPEndPoint ipEndPoint = null;
+
+
+                if (string.IsNullOrEmpty(ntpServer))
+                {
+                    throw new Exception("服务器地址为空：");
+                }
+
+                if (RegularCheckHelper.IPv6(ntpServer))
+                {
+                    ipEndPoint = new IPEndPoint(IPAddress.Parse(ntpServer), port);
+                }
+                else
+                {
+                    IPAddress[] addresses = Dns.GetHostEntry(ntpServer).AddressList;
+                    ipEndPoint = new IPEndPoint(addresses[0], port);
+                }
+                // The UDP port number assigned to NTP is 123
+
+                // NTP uses UDP
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+                // socket.SetSocketOption(SocketOptionLevel.Socket, SocketOptionName.ReceiveTimeout, 10000);
+
+
+                socket.Connect(ipEndPoint);
+
+                /////////////////////////////////
+                ManualResetEvent waitEvent = new ManualResetEvent(false);
+                //socket.BeginConnect(
+                //    ipEndPoint,
+                //    new AsyncCallback(delegate(IAsyncResult ar)
+                //    {
+                //        waitEvent.Set();
+                //    }),
+                //    socket);
+                //waitEvent.WaitOne(3000, false);
+                //if (socket.Connected)
+                //{
+                //    // connected
+                //}
+                //else
+                //{
+                //    // timeout
+                //    socket.Close();
+                //    return false;
+                //}
+                ///////////////////////////////////
+
+                //socket.Connect(ipEndPoint);
+                // Stops code hang if NTP is blocked
+                //socket.ReceiveTimeout = 3000;
+                socket.Send(ntpData);
+                waitEvent.Reset();
+                bool received = false;
+                Thread thread = new Thread(() =>
+                {
+                    try
+                    {
+                        socket.Receive(ntpData);
+                        received = true;
+                        waitEvent.Set();
+                    }
+                    catch
+                    { }
+                });
+                thread.Start();
+                waitEvent.WaitOne(10000, false);
+                if (received)
+                {
+                    // do received
+                }
+                else
+                {
+                    thread.Abort();
+                    // timeout
+                    socket.Close();
+                    throw new Exception("接收数据超时：");
+
+                }
+                socket.Shutdown(SocketShutdown.Both);
+                socket.Close();
+
+                // Offset to get to the "Transmit Timestamp" field (time at which the reply 
+                // departed the server for the client, in 64-bit timestamp format."
+                const byte serverReplyTime = 40;
+                // Get the seconds part
+                ulong intPart = BitConverter.ToUInt32(ntpData, serverReplyTime);
+                // Get the seconds fraction
+                ulong fractPart = BitConverter.ToUInt32(ntpData, serverReplyTime + 4);
+                // Convert From big-endian to little-endian
+                intPart = swapEndian(intPart);
+                fractPart = swapEndian(fractPart);
+                ulong milliseconds = (intPart * 1000) + ((fractPart * 1000) / 0x100000000UL);
+
+                // UTC time
+                DateTime webTime = (new DateTime(1900, 1, 1, 0, 0, 0, DateTimeKind.Utc)).AddMilliseconds(milliseconds);
+                // Local time
+
+                dt = webTime.ToLocalTime();
+            }
+            catch (Exception ex)
+            {
+                msg = ex.Message;
+                return false;
+            }
+            return true;
+        }
+
+        // 小端存储与大端存储的转换
+        private static uint swapEndian(ulong x)
+        {
+            return (uint)(((x & 0x000000ff) << 24) +
+            ((x & 0x0000ff00) << 8) +
+            ((x & 0x00ff0000) >> 8) +
+            ((x & 0xff000000) >> 24));
+        }
 
         #endregion
         #region 公共方法

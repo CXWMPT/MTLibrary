@@ -88,8 +88,5 @@ namespace MTLibrary
         }
         #endregion
 
-        #region 已废弃方法
-        #endregion
-
     }
 }

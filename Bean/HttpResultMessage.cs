@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MTLibrary.Bean
+namespace MTLibrary
 {
     public class HttpResultMessage<T>
     {
