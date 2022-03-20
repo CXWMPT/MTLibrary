@@ -14,23 +14,29 @@ namespace MTLibrary
         /// <summary>
         /// 提示
         /// </summary>
-        Info,
+        Info = -7299687,
         /// <summary>
         /// 警告
         /// </summary>
-        Warning,
+        Warning = -693140,
         /// <summary>
         /// 错误
         /// </summary>
-        Error,
+        Error= -1097849,
+
+        /// <summary>
+        /// 成功
+        /// </summary>
+        Success = -9977286,
         /// <summary>
         /// 询问
         /// </summary>
-        Question,
+        Question=0,
         /// <summary>
         /// 确认
         /// </summary>
-        Comfirm,
+        Comfirm=0,
+
 
     }
 }
