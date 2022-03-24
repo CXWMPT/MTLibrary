@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace MTLibrary
 {
@@ -90,7 +86,7 @@ namespace MTLibrary
                 ICryptoTransform cTransform = rm.CreateDecryptor();
                 Byte[] resultArray = cTransform.TransformFinalBlock(toEncryptArray, 0, toEncryptArray.Length);
 
-                return Encoding.UTF8.GetString(resultArray);
+                return Encoding.UTF8.GetString(resultArray,0, resultArray.Length);
             }
             catch (Exception)
             {

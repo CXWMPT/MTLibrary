@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace NTDCommLib
@@ -79,21 +77,8 @@ namespace NTDCommLib
         {
             try
             {
-                if (!File.Exists(sourceFileName))
-                {
-                    return false;
-                }
-                if (!File.Exists(destFileName))
-                {
-                    //文件不存在就创建文件和文件夹
-                    if (!Directory.Exists(Path.GetDirectoryName(destFileName)))
-                    {
-                        Directory.CreateDirectory(Path.GetDirectoryName(destFileName));
-                    }
-                    File.Create(destFileName).Dispose(); //创建完文件关闭，防止文件被占用
-                }
-                File.Copy(sourceFileName, destFileName, true);
-                return true;
+                string msg = string.Empty;
+                return FileReplace(sourceFileName,destFileName, out  msg);
             }
             catch (Exception ex)
             {
@@ -145,29 +130,104 @@ namespace NTDCommLib
         /// <param name="path"></param>
         public static bool DeleteFile(string path)
         {
-            if (string.IsNullOrWhiteSpace(path)) return false;
-            if (File.Exists(path) || Directory.Exists(path))
+            try
             {
-                // 2、根据路径字符串判断是文件还是文件夹
-                FileAttributes attr = File.GetAttributes(path);
-                // 3、根据具体类型进行删除
-                if (attr == FileAttributes.Directory)
-                {
-                    // 3.1、删除文件夹
-                    Directory.Delete(path, true);
-                }
-                else
+                if (string.IsNullOrEmpty(path)) return false;
+                if (File.Exists(path))
                 {
                     // 3.2、删除文件
                     File.Delete(path);
+                    return true;
+                }
+                else if (Directory.Exists(path))
+                {
+                    // 3.1、删除文件夹
+                    Directory.Delete(path, true);
+                    return true;
                 }
 
-                return true;
+                return false;
+            }
+            catch (Exception)
+            {
+                return false;
             }
             return false;
         }
+        /// <summary>
+        /// 创建文件和文件夹
+        /// </summary>
+        /// <param name="path"></param>
+        public static void CreateFile(string path)
+        {
 
-       
+            if (!File.Exists(path))
+            {
+                //文件不存在就创建文件和文件夹
+                if (!Directory.Exists(Path.GetDirectoryName(path)))
+                {
+                    Directory.CreateDirectory(Path.GetDirectoryName(path));
+                }
+
+                File.Create(path).Dispose(); //创建完文件关闭，防止文件被占用;
+            }
+        }
+
+        /// <summary>
+        /// 读取文件内容
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static string FileToString(string filePath)
+        {
+            if (!File.Exists(filePath))
+            {
+                return "";
+            }
+            Encoding encoding = Encoding.UTF8;
+            StreamReader reader = null;
+            string fileData = string.Empty; ;
+            try
+            {
+            load:
+                reader = new StreamReader(filePath, encoding, true);
+                fileData = reader.ReadToEnd();
+                if (fileData.Contains("�") || fileData.Contains("★") || fileData.Contains("╀") || fileData.Contains("??"))
+                {
+                    switch (encoding.WebName)
+                    {
+                        case "utf-8":
+                            encoding = Encoding.Default;
+                            break;
+                        case "GB2312":
+                            encoding = Encoding.ASCII;
+                            break;
+                        case "us-ascii":
+                            encoding = Encoding.UTF7;
+                            break;
+                        case "utf-7":
+                            encoding = Encoding.Unicode;
+                            break;
+                        default:
+
+                            return "";
+                    }
+                    goto load;
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                return "";
+            }
+            finally
+            {
+                reader.Close();
+            }
+
+            return fileData;
+        }
 
 
         #endregion
@@ -286,7 +346,12 @@ namespace NTDCommLib
             }
         }
         #endregion
+        #region .net3.5不支持
+
+        #endregion
+
         #region 内部常量方法
+
         #endregion
 
 

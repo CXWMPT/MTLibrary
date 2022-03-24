@@ -59,6 +59,7 @@
     <Compile Include="BasicDataType\LongHelper.cs" />
     <Compile Include="BasicDataType\StringHelper.cs" />
     <Compile Include="Bean\HttpResultMessage.cs" />
+    <Compile Include="Bean\ResultMessage.cs" />
     <Compile Include="Bean\WeightCoreBean.cs" />
     <Compile Include="EncryptionMode\AESHelper.cs" />
     <Compile Include="EncryptionMode\DESHelper.cs" />
@@ -101,11 +102,17 @@
       <DependentUpon>MTUC_Page_V1.cs</DependentUpon>
     </Compile>
     <Compile Include="Extend\WinApiHelper.cs" />
-    <Compile Include="UserForm\FrmTips.cs">
+    <Compile Include="UserForm\MTFrmMsg.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm\FrmTips.Designer.cs">
-      <DependentUpon>FrmTips.cs</DependentUpon>
+    <Compile Include="UserForm\MTFrmMsg.Designer.cs">
+      <DependentUpon>MTFrmMsg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserForm\MTFrmTips.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm\MTFrmTips.Designer.cs">
+      <DependentUpon>MTFrmTips.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -119,8 +126,11 @@
     <EmbeddedResource Include="UserControl\PageControl\MTUC_Page_V1.resx">
       <DependentUpon>MTUC_Page_V1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserForm\FrmTips.resx">
-      <DependentUpon>FrmTips.cs</DependentUpon>
+    <EmbeddedResource Include="UserForm\MTFrmMsg.resx">
+      <DependentUpon>MTFrmMsg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm\MTFrmTips.resx">
+      <DependentUpon>MTFrmTips.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

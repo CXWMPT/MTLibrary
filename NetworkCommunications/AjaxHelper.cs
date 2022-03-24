@@ -82,18 +82,29 @@ namespace MTLibrary
             return result;
         }
 
-
-
         /// <summary>
-        /// 指定Url地址使用Get 方式获取全部字符串
+        ///  指定Url地址使用Get 方式获取全部字符串
         /// </summary>
-        /// <param name="url">服务器访问地址[带有https://或http://]</param>
-        /// <param name="result">从服务器返回的字符串</param>
-        /// <param name="IsSaveLogData">是否写入log日志</param>
-        /// <param name="timeout">连接服务器超时时间</param>
-        /// <param name="type">传参格式[对象还是Json]</param>
+        /// <param name="url"></param>
+        /// <param name="result"></param>
         /// <returns></returns>
-        public static bool Get(string url, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData=false, int timeout= 60000, string type= "application/json")
+
+        public static bool Get(string url, out string result)
+        {
+            return Get(url, out  result, null,false, 60000,"application/json");
+        }
+
+
+            /// <summary>
+            /// 指定Url地址使用Get 方式获取全部字符串
+            /// </summary>
+            /// <param name="url">服务器访问地址[带有https://或http://]</param>
+            /// <param name="result">从服务器返回的字符串</param>
+            /// <param name="IsSaveLogData">是否写入log日志</param>
+            /// <param name="timeout">连接服务器超时时间</param>
+            /// <param name="type">传参格式[对象还是Json]</param>
+            /// <returns></returns>
+            public static bool Get(string url, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
             result = string.Empty;
             if (!url.Contains("http"))
@@ -143,6 +154,17 @@ namespace MTLibrary
             }
         }
 
+        /// <summary>
+        ///  指定Url地址使用Get 方式获取全部字符串
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="dic"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Get(string url, Dictionary<string, string> dic, out string result)
+        {
+            return Get(url, dic, out result, null, false, 60000, "application/json");
+        }
 
         /// <summary>
         /// 指定Url地址使用Get方式获取全部字符串
@@ -154,7 +176,7 @@ namespace MTLibrary
         /// <param name="timeout">连接服务器超时时间</param>
         /// <param name="type">传参格式[对象还是Json]</param>
         /// <returns></returns>
-        public static bool Get(string url, Dictionary<string, string> dic, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData=false, int timeout=60000 , string type = "application/json")
+        public static bool Get(string url, Dictionary<string, string> dic, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout , string type)
         {
             result = string.Empty;
             if (!url.Contains("http"))
@@ -215,10 +237,18 @@ namespace MTLibrary
                 if (resp != null) resp.Close();
                 if (IsSaveLogData) LogFileHelper.AddLog("url:" + url + ";result:" + result);
             }
-
-
         }
 
+        /// <summary>
+        /// 指定Url地址使用Post方式提交
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Post(string url, out string result)
+        {
+            return Post(url, out result, null, false, 60000, "application/json");
+        }
         /// <summary>
         /// 指定Url地址使用Post方式提交
         /// </summary>
@@ -229,7 +259,7 @@ namespace MTLibrary
         /// <param name="type">传参格式</param>
         /// <returns></returns>
         /// <returns></returns>
-        public static bool Post(string url, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData = false, int timeout = 60000, string type = "application/json")
+        public static bool Post(string url, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
 
             result = string.Empty;
@@ -280,6 +310,17 @@ namespace MTLibrary
             }
         }
 
+        /// <summary>
+        /// 指定Url地址使用Post方式提交
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="content"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Post(string url, string content, out string result)
+        {
+            return Post(url, content,out result, null, false, 60000, "application/json");
+        }
 
         /// <summary>
         /// 指定Url地址使用Post方式提交
@@ -291,7 +332,7 @@ namespace MTLibrary
         /// <param name="timeout">连接服务器超时时间</param>
         /// <param name="type">传参格式</param>
         /// <returns></returns>
-        public static bool Post(string url, string content, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData = false, int timeout = 60000, string type = "application/json")
+        public static bool Post(string url, string content, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
 
             result = string.Empty;
@@ -353,7 +394,17 @@ namespace MTLibrary
 
         }
 
-
+        /// <summary>
+        /// 指定Url地址使用Post方式提交
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="dic"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Post(string url, Dictionary<string, string> dic, out string result)
+        {
+            return Post(url, dic, out result, null, false, 60000, "application/x-www-form-urlencoded");
+        }
 
         /// <summary>
         /// 指定Url地址使用Post方式提交
@@ -365,7 +416,7 @@ namespace MTLibrary
         /// <param name="timeout">连接服务器超时时间</param>
         /// <param name="type">传参格式</param>
         /// <returns></returns>
-        public static bool Post(string url, Dictionary<string, string> dic, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData = false, int timeout = 60000, string type = "application/x-www-form-urlencoded")
+        public static bool Post(string url, Dictionary<string, string> dic, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
 
             result = string.Empty;
@@ -433,6 +484,16 @@ namespace MTLibrary
             }
         }
 
+        /// <summary>
+        /// 指定Url地址使用Post方式提交
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Put(string url, out string result)
+        {
+            return Put(url, out result, null, false, 60000, "application/json");
+        }
 
         /// <summary>
         /// 指定Url地址使用Post方式提交
@@ -444,7 +505,7 @@ namespace MTLibrary
         /// <param name="type">传参格式</param>
         /// <returns></returns>
         /// <returns></returns>
-        public static bool Put(string url, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData = false, int timeout = 60000, string type = "application/json")
+        public static bool Put(string url, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
 
             result = string.Empty;
@@ -494,6 +555,17 @@ namespace MTLibrary
             }
         }
 
+        /// <summary>
+        /// 指定Url地址使用Put方式提交
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="content"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Put(string url, string content, out string result)
+        {
+            return Put(url,content,out result, null, false, 60000, "application/json");
+        }
 
         /// <summary>
         /// 指定Url地址使用Put方式提交
@@ -505,7 +577,7 @@ namespace MTLibrary
         /// <param name="timeout">连接服务器超时时间</param>
         /// <param name="type">传参格式</param>
         /// <returns></returns>
-        public static bool Put(string url, string content, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData = false, int timeout = 60000, string type = "application/json")
+        public static bool Put(string url, string content, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
 
             result = string.Empty;
@@ -567,7 +639,17 @@ namespace MTLibrary
         }
 
 
-
+        /// <summary>
+        /// 指定Url地址使用Put方式提交
+        /// </summary>
+        /// <param name="url"></param>
+        /// <param name="dic"></param>
+        /// <param name="result"></param>
+        /// <returns></returns>
+        public static bool Put(string url, Dictionary<string, string> dic, out string result)
+        {
+            return Put(url, dic, out result, null, false, 60000, "application/x-www-form-urlencoded");
+        }
 
         /// <summary>
         /// 指定Url地址使用Put方式提交
@@ -579,7 +661,7 @@ namespace MTLibrary
         /// <param name="timeout">连接服务器超时时间</param>
         /// <param name="type">传参格式</param>
         /// <returns></returns>
-        public static bool Put(string url, Dictionary<string, string> dic, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData = false, int timeout = 60000, string type = "application/x-www-form-urlencoded")
+        public static bool Put(string url, Dictionary<string, string> dic, out string result, Dictionary<string, string> headersDic, bool IsSaveLogData, int timeout, string type)
         {
 
             result = string.Empty;

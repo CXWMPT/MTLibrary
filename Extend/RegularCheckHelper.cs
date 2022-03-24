@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace MTLibrary
 {
@@ -41,16 +38,17 @@ namespace MTLibrary
             int n = -1;
             for (int i = 0; i < IPs.Length; i++)
             {
+                n = IntHelper.Conversion(IPs[i]);
                 if (i == 0 || i == 3)
                 {
-                    if (int.TryParse(IPs[i], out n) && n > 0 && n < 255)
+                    if (n > 0 && n < 255)
                         continue;
                     else
                         return false;
                 }
                 else
                 {
-                    if (int.TryParse(IPs[i], out n) && n >= 0 && n <= 255)
+                    if (n >= 0 && n <= 255)
                         continue;
                     else
                         return false;

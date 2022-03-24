@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MTLibrary
 {
@@ -122,7 +118,7 @@ namespace MTLibrary
             {
                 //divValue = (ulong)Math.Floor(tenValue / 16);
 
-                divValue = (ulong)Math.Floor((decimal)(tenValue / 16));
+                divValue = (ulong)Math.Floor((double)(tenValue / 16));
 
                 resValue = tenValue % 16;
                 hex = tenValue2Char(resValue) + hex;

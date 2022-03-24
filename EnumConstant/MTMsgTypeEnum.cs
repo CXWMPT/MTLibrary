@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace MTLibrary
 {
     /// <summary>
     /// 弹出框枚举
     /// </summary>
-    public enum NTDMsgTypeEnum
+    public enum MTMsgTypeEnum
     {
         /// <summary>
         /// 提示

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MTLibrary
 {
@@ -19,7 +15,7 @@ namespace MTLibrary
         {
             try
             {
-                return (T)Enum.Parse(typeof(T), s);
+                return (T)Enum.Parse(typeof(T), s,false);
             }
             catch (Exception ex)
             {

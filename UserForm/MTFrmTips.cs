@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MTLibrary
 {
-    public partial class FrmTips : Form
+    public partial class MTFrmTips : Form
     {
         /// <summary>
         /// Sets the foreground window.
@@ -38,10 +38,15 @@ namespace MTLibrary
         /// </summary>
         private int WaitedTime = 0;
 
-        private static KeyValuePair<string, FrmTips> m_lastTips = new KeyValuePair<string, FrmTips>();
+        private static KeyValuePair<string, MTFrmTips> m_lastTips = new KeyValuePair<string, MTFrmTips>();
 
-        private static List<FrmTips> m_lstTips = new List<FrmTips>();
+        private static List<MTFrmTips> m_lstTips = new List<MTFrmTips>();
 
+
+        public MTFrmTips()
+        {
+            InitializeComponent();
+        }
 
         /// <summary>
         /// Shows the tips success.
@@ -49,9 +54,9 @@ namespace MTLibrary
         /// <param name="frm">The FRM.</param>
         /// <param name="strMsg">The string MSG.</param>
         /// <returns>FrmTips.</returns>
-        public static FrmTips ShowTipsSuccess(Form frm, string strMsg)
+        public static MTFrmTips ShowTipsSuccess(Form frm, string strMsg)
         {
-            return FrmTips.ShowTips(frm, strMsg, 3000, false, NTDMsgTypeEnum.Success);
+            return MTFrmTips.ShowTips(frm, strMsg, 3000, false, MTMsgTypeEnum.Success);
         }
 
         /// <summary>
@@ -60,9 +65,9 @@ namespace MTLibrary
         /// <param name="frm">The FRM.</param>
         /// <param name="strMsg">The string MSG.</param>
         /// <returns>FrmTips.</returns>
-        public static FrmTips ShowTipsError(Form frm, string strMsg)
+        public static MTFrmTips ShowTipsError(Form frm, string strMsg)
         {
-            return FrmTips.ShowTips(frm, strMsg, 3000, false, NTDMsgTypeEnum.Error, MTSizeModeEnum.Medium);
+            return MTFrmTips.ShowTips(frm, strMsg, 3000, false, MTMsgTypeEnum.Error, MTSizeModeEnum.Medium);
         }
 
         /// <summary>
@@ -71,9 +76,9 @@ namespace MTLibrary
         /// <param name="frm">The FRM.</param>
         /// <param name="strMsg">The string MSG.</param>
         /// <returns>FrmTips.</returns>
-        public static FrmTips ShowTipsInfo(Form frm, string strMsg)
+        public static MTFrmTips ShowTipsInfo(Form frm, string strMsg)
         {
-            return FrmTips.ShowTips(frm, strMsg, 3000, false, NTDMsgTypeEnum.Info, MTSizeModeEnum.Medium);
+            return MTFrmTips.ShowTips(frm, strMsg, 3000, false, MTMsgTypeEnum.Info, MTSizeModeEnum.Medium);
         }
         /// <summary>
         /// Shows the tips warning.
@@ -81,13 +86,13 @@ namespace MTLibrary
         /// <param name="frm">The FRM.</param>
         /// <param name="strMsg">The string MSG.</param>
         /// <returns>FrmTips.</returns>
-        public static FrmTips ShowTipsWarning(Form frm, string strMsg)
+        public static MTFrmTips ShowTipsWarning(Form frm, string strMsg)
         {
-            return FrmTips.ShowTips(frm, strMsg, 3000, false, NTDMsgTypeEnum.Warning, MTSizeModeEnum.Medium);
+            return MTFrmTips.ShowTips(frm, strMsg, 3000, false, MTMsgTypeEnum.Warning, MTSizeModeEnum.Medium);
         }
 
 
-        public static FrmTips ShowTips(Form frm, string strMsg,int waitedTime = 0,bool blnShowCoseBtn = true, NTDMsgTypeEnum msgTypeEnum = NTDMsgTypeEnum.Info, MTSizeModeEnum sizeModeEnum = MTSizeModeEnum.Medium)
+        public static MTFrmTips ShowTips(Form frm, string strMsg,int waitedTime = 0,bool blnShowCoseBtn = true, MTMsgTypeEnum msgTypeEnum = MTMsgTypeEnum.Info, MTSizeModeEnum sizeModeEnum = MTSizeModeEnum.Medium)
         {
 
             if (m_lastTips.Key == strMsg + msgTypeEnum && !m_lastTips.Value.IsDisposed && m_lastTips.Value.Visible)
@@ -97,11 +102,11 @@ namespace MTLibrary
             }
             else
             {
-                FrmTips frmTips = new FrmTips();
+                var  frmTips = new MTFrmTips();
 
                 if ((int)msgTypeEnum==0) 
                 {
-                    msgTypeEnum = NTDMsgTypeEnum.Info;
+                    msgTypeEnum = MTMsgTypeEnum.Info;
                 }
 
                 switch (sizeModeEnum)
@@ -126,16 +131,16 @@ namespace MTLibrary
                 switch (msgTypeEnum)
                 {
                     default:
-                    case NTDMsgTypeEnum.Info:
+                    case MTMsgTypeEnum.Info:
                         frmTips.PctStat.Image = Properties.Resources.alarm;
                         break;
-                    case NTDMsgTypeEnum.Success:
+                    case MTMsgTypeEnum.Success:
                         frmTips.PctStat.Image = Properties.Resources.success;
                         break;
-                    case NTDMsgTypeEnum.Warning:
+                    case MTMsgTypeEnum.Warning:
                         frmTips.PctStat.Image = Properties.Resources.warning;
                         break;
-                    case NTDMsgTypeEnum.Error:
+                    case MTMsgTypeEnum.Error:
                         frmTips.PctStat.Image = Properties.Resources.error;
                         break;
                 }
@@ -147,25 +152,21 @@ namespace MTLibrary
 
                 frmTips.ShowAlign = ContentAlignment.BottomCenter;
                 frmTips.Owner = frm;
-                FrmTips.m_lstTips.Add(frmTips);
-                FrmTips.ReshowTips();
+                MTFrmTips.m_lstTips.Add(frmTips);
+                MTFrmTips.ReshowTips();
                 frmTips.Show(frm);
                 if (frm != null && !frm.IsDisposed)
                 {
                    SetForegroundWindow(frm.Handle);
                 }
                 //frmTips.BringToFront();
-                m_lastTips = new KeyValuePair<string, FrmTips>(strMsg + msgTypeEnum, frmTips);
+                m_lastTips = new KeyValuePair<string, MTFrmTips>(strMsg + msgTypeEnum, frmTips);
                 return frmTips;
             }
         }
 
 
-        public FrmTips()
-        {
-            InitializeComponent();
-        }
-
+     
         private void FrmTips_Load(object sender, EventArgs e)
         {
             if (WaitedTime > 0)
@@ -201,17 +202,17 @@ namespace MTLibrary
         /// </summary>
         public static void ReshowTips()
         {
-            lock (FrmTips.m_lstTips)
+            lock (MTFrmTips.m_lstTips)
             {
-                FrmTips.m_lstTips.RemoveAll(p => p.IsDisposed == true);
-                var enumerable = from p in FrmTips.m_lstTips
+                MTFrmTips.m_lstTips.RemoveAll(p => p.IsDisposed == true);
+                var enumerable = from p in MTFrmTips.m_lstTips
                                  group p by new
                                  {
                                      p.ShowAlign
                                  };
                 Screen currentScreen = Screen.PrimaryScreen;
 
-                var firstTip = FrmTips.m_lstTips.FirstOrDefault();
+                var firstTip = MTFrmTips.m_lstTips.FirstOrDefault();
                 if (firstTip != null && firstTip.Owner != null)
                 {
                     currentScreen = Screen.FromControl(firstTip.Owner);
@@ -220,10 +221,10 @@ namespace MTLibrary
                 Size size = currentScreen.Bounds.Size;
                 foreach (var item in enumerable)
                 {
-                    List<FrmTips> list = FrmTips.m_lstTips.FindAll((FrmTips p) => p.ShowAlign == item.Key.ShowAlign);
+                    List<MTFrmTips> list = MTFrmTips.m_lstTips.FindAll((MTFrmTips p) => p.ShowAlign == item.Key.ShowAlign);
                     for (int i = 0; i < list.Count; i++)
                     {
-                        FrmTips frmTips = list[i];
+                        MTFrmTips frmTips = list[i];
                         if (frmTips.InvokeRequired)
                         {
                             frmTips.BeginInvoke(new MethodInvoker(delegate ()
@@ -320,13 +321,13 @@ namespace MTLibrary
         private void FrmTips_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (m_lastTips.Value == this)
-                m_lastTips = new KeyValuePair<string, FrmTips>();
+                m_lastTips = new KeyValuePair<string, MTFrmTips>();
             m_lstTips.Remove(this);
             ReshowTips();
 
             for (int i = Application.OpenForms.Count - 1; i >= 0; i--)
             {
-                if (Application.OpenForms[i].IsDisposed || !Application.OpenForms[i].Visible || Application.OpenForms[i] is FrmTips)
+                if (Application.OpenForms[i].IsDisposed || !Application.OpenForms[i].Visible || Application.OpenForms[i] is MTFrmTips)
                 {
                     continue;
                 }
@@ -357,6 +358,11 @@ namespace MTLibrary
         {
             this.TmrCloseTime.Enabled = false;
             this.Close();
+        }
+
+        internal static MTFrmTips ShowMTFrmMsg(MTMsgTypeEnum type)
+        {
+            throw new NotImplementedException();
         }
     }
 

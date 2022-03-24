@@ -5,11 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Management;
 using System.Net.NetworkInformation;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MTLibrary
 {
+    /// <summary>
+    /// wince暂不支持
+    /// </summary>
     public class SystemInfoHelper
     {
         /// <summary>

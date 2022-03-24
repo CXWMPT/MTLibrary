@@ -1,14 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing.Printing;
-using System.IO;
-using System.IO.Ports;
-using System.Linq;
 using System.Management;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace MTLibrary
 {

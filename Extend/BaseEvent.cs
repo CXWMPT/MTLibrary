@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Linq;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MTLibrary
 {
@@ -12,14 +9,13 @@ namespace MTLibrary
         //错误码
         public int Code { get; private set; }
         //提示信息
-        public string Message { get; private set; } = string.Empty;
+        public string Message { get; private set; }
         //返回具体内容
         public T Data { get; private set; }
         //表格总条数
         public int Count { get; private set; }
         public int Total { get; private set; }
 
-        //public MeterEntity WeightData { get; private set; }
         public BaseEvent()
         {
             Code = 0;

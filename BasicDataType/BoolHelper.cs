@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace MTLibrary
 {
@@ -19,7 +16,7 @@ namespace MTLibrary
         {
             try
             {
-                if (string.IsNullOrWhiteSpace(o?.ToString())) return false;
+                if (string.IsNullOrEmpty(o == null ? "" : o.ToString())) return false;
                 return Convert.ToBoolean(o);
             }
             catch

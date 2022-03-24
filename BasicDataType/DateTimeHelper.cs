@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Runtime.InteropServices;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
+
 
 namespace MTLibrary
 {
@@ -85,7 +82,7 @@ namespace MTLibrary
             msg = string.Empty;
             try
             {
-                ntpServer = "10.130.40.2 ";
+                // ntpServer = "10.130.40.2 ";
                 // default ntp server
                 // const  string ntpServer ="ntp1.aliyun.com";
                 // string ntpServer = "ntp1.aliyun.com";

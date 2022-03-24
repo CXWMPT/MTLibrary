@@ -1,4 +1,3 @@
-D:\CShap\MTLibrary\obj\Debug\MTLibrary.csproj.AssemblyReference.cache
 D:\CShap\MTLibrary\obj\Debug\MTLibrary.MTUC_Page_V1.resources
 D:\CShap\MTLibrary\obj\Debug\MTLibrary.csproj.GenerateResource.cache
 D:\CShap\MTLibrary\obj\Debug\MTLibrary.csproj.CoreCompileInputs.cache
@@ -7,4 +6,6 @@ D:\CShap\MTLibrary\bin\Debug\MTLibrary.pdb
 D:\CShap\MTLibrary\obj\Debug\MTLibrary.dll
 D:\CShap\MTLibrary\obj\Debug\MTLibrary.pdb
 D:\CShap\MTLibrary\obj\Debug\MTLibrary.Properties.Resources.resources
-D:\CShap\MTLibrary\obj\Debug\MTLibrary.FrmTips.resources
+D:\CShap\MTLibrary\obj\Debug\MTLibrary.MTFrmTips.resources
+D:\CShap\MTLibrary\obj\Debug\MTLibrary.MTFrmMsg.resources
+D:\CShap\MTLibrary\obj\Debug\MTLibrary.csproj.AssemblyReference.cache

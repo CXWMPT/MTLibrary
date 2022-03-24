@@ -2,12 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using System.Globalization;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace MTLibrary
@@ -147,58 +143,7 @@ namespace MTLibrary
             return result;
         }
 
-        /// <summary>
-        /// 将DataGridView转成DataTable
-        /// </summary>
-        /// <param name="dgv"></param>
-        /// <param name="isFilter"></param>
-        /// <returns></returns>
-        public static DataTable Conversion(DataGridView dgv, bool isFilter)
-        {
-            DataTable tmpDataTable = new DataTable("tmpDataTable");
-            DataTable modelTable = new DataTable("ModelTable");
-            if (isFilter)
-            {
-                for (int column = 0; column < dgv.Columns.Count; column++)
-                {
-                    if (dgv.Columns[column].Visible == true)
-                    {
-                        DataColumn tempColumn = new DataColumn(dgv.Columns[column].HeaderText, typeof(string));
-                        tmpDataTable.Columns.Add(tempColumn);
-                        DataColumn modelColumn = new DataColumn(dgv.Columns[column].Name, typeof(string));
-                        modelTable.Columns.Add(modelColumn);
-                    }
-                }
-                for (int row = 0; row < dgv.Rows.Count; row++)
-                {
-                    if (dgv.Rows[row].Visible == false)
-                        continue;
-                    DataRow tempRow = tmpDataTable.NewRow();
-                    for (int i = 0; i < tmpDataTable.Columns.Count; i++)
-                        tempRow[i] = dgv.Rows[row].Cells[modelTable.Columns[i].ColumnName].Value;
-                    tmpDataTable.Rows.Add(tempRow);
-                }
-            }
-            else
-            {
-                for (int column = 0; column < dgv.Columns.Count; column++)
-                {
-                    DataColumn tempColumn = new DataColumn(dgv.Columns[column].HeaderText, typeof(string));
-                    tmpDataTable.Columns.Add(tempColumn);
-                    DataColumn modelColumn = new DataColumn(dgv.Columns[column].Name, typeof(string));
-                    modelTable.Columns.Add(modelColumn);
-                }
-                for (int row = 0; row < dgv.Rows.Count; row++)
-                {
-                    DataRow tempRow = tmpDataTable.NewRow();
-                    for (int i = 0; i < tmpDataTable.Columns.Count; i++)
-                        tempRow[i] = dgv.Rows[row].Cells[modelTable.Columns[i].ColumnName].Value;
-                    tmpDataTable.Rows.Add(tempRow);
-                }
-            }
-            return tmpDataTable;
-
-        }
+    
 
 
 
@@ -265,5 +210,60 @@ namespace MTLibrary
         }
         #endregion
 
+
+        #region .net3.5不支持
+        /// <summary>
+        /// 将DataGridView转成DataTable(wince不支持)
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="isFilter"></param>
+        /// <returns></returns>
+        public static DataTable Conversion(DataGridView dgv, bool isFilter)
+        {
+            DataTable tmpDataTable = new DataTable("tmpDataTable");
+            DataTable modelTable = new DataTable("ModelTable");
+            if (isFilter)
+            {
+                for (int column = 0; column < dgv.Columns.Count; column++)
+                {
+                    if (dgv.Columns[column].Visible == true)
+                    {
+                        DataColumn tempColumn = new DataColumn(dgv.Columns[column].HeaderText, typeof(string));
+                        tmpDataTable.Columns.Add(tempColumn);
+                        DataColumn modelColumn = new DataColumn(dgv.Columns[column].Name, typeof(string));
+                        modelTable.Columns.Add(modelColumn);
+                    }
+                }
+                for (int row = 0; row < dgv.Rows.Count; row++)
+                {
+                    if (dgv.Rows[row].Visible == false)
+                        continue;
+                    DataRow tempRow = tmpDataTable.NewRow();
+                    for (int i = 0; i < tmpDataTable.Columns.Count; i++)
+                        tempRow[i] = dgv.Rows[row].Cells[modelTable.Columns[i].ColumnName].Value;
+                    tmpDataTable.Rows.Add(tempRow);
+                }
+            }
+            else
+            {
+                for (int column = 0; column < dgv.Columns.Count; column++)
+                {
+                    DataColumn tempColumn = new DataColumn(dgv.Columns[column].HeaderText, typeof(string));
+                    tmpDataTable.Columns.Add(tempColumn);
+                    DataColumn modelColumn = new DataColumn(dgv.Columns[column].Name, typeof(string));
+                    modelTable.Columns.Add(modelColumn);
+                }
+                for (int row = 0; row < dgv.Rows.Count; row++)
+                {
+                    DataRow tempRow = tmpDataTable.NewRow();
+                    for (int i = 0; i < tmpDataTable.Columns.Count; i++)
+                        tempRow[i] = dgv.Rows[row].Cells[modelTable.Columns[i].ColumnName].Value;
+                    tmpDataTable.Rows.Add(tempRow);
+                }
+            }
+            return tmpDataTable;
+
+        }
+        #endregion
     }
 }
