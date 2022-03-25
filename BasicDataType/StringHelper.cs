@@ -24,6 +24,53 @@ namespace MTLibrary
             }
         }
 
+        /// <summary>
+        /// 获取小数点后的有位数
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
+        public static int GetSpecifyDecimalPlaces(string value)
+        {
+            var strArray = value.Split('.');
+            if (strArray.Length == 2)
+            {
+
+                return strArray[1].Length;
+            }
+            else
+            {
+                return 0;
+            }
+
+        }
+
+
+
+        /// <summary>
+        /// 根据小数位数获取值（1，0.1）
+        /// </summary>
+        /// <param name="i"></param>
+        /// <returns></returns>
+        public static string GetValueByDecimalPlaces(int i)
+        {
+            string tmp = string.Empty;
+            try
+            {
+                if (i < 1)
+                {
+                    tmp = "1";
+                }
+                else
+                {
+                    tmp = "0." + (1).ToString().PadLeft(i, '0');
+                }
+            }
+            catch (Exception)
+            {
+                return "1";
+            }
+            return tmp;
+        }
 
 
         /// <summary>
