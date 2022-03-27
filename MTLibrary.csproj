@@ -74,7 +74,7 @@
     <Compile Include="EnumConstant\MTPageEnum.cs" />
     <Compile Include="Extend\BaseEvent.cs" />
     <Compile Include="Extend\FormHelper.cs" />
-    <Compile Include="Extend\MTKeyBoardHelper.cs" />
+    <Compile Include="Extend\KeyBoardHelper.cs" />
     <Compile Include="Extend\PageHelper.cs" />
     <Compile Include="Extend\PrinterHelper.cs" />
     <Compile Include="Extend\ReflectionHelper.cs" />

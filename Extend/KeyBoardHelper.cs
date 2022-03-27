@@ -2,7 +2,7 @@
 
 namespace MTLibrary
 {
-    public class MTKeyBoardHelper
+    public class KeyBoardHelper
     {
         #region 
 

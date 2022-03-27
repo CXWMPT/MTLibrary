@@ -87,7 +87,7 @@ namespace MTLibrary
             // 
             this.LblMessage.BackColor = System.Drawing.Color.Transparent;
             this.LblMessage.Font = new System.Drawing.Font("微软雅黑", 12F);
-            this.LblMessage.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(35)))), ((int)(((byte)(65)))), ((int)(((byte)(159)))));
+            this.LblMessage.ForeColor = System.Drawing.Color.Black;
             this.LblMessage.Location = new System.Drawing.Point(16, 51);
             this.LblMessage.Name = "LblMessage";
             this.LblMessage.Size = new System.Drawing.Size(422, 158);
