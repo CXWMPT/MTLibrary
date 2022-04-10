@@ -110,6 +110,7 @@ namespace MTLibrary
             this.BtnCancel.TabStop = false;
             this.BtnCancel.Text = "取消";
             this.BtnCancel.UseVisualStyleBackColor = false;
+            this.BtnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             this.BtnCancel.MouseLeave += new System.EventHandler(this.BtnOK_MouseLeave);
             this.BtnCancel.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnOK_MouseMove);
             // 
@@ -130,6 +131,7 @@ namespace MTLibrary
             this.BtnOK.TabStop = false;
             this.BtnOK.Text = "确定";
             this.BtnOK.UseVisualStyleBackColor = false;
+            this.BtnOK.Click += new System.EventHandler(this.BtnOK_Click);
             this.BtnOK.MouseLeave += new System.EventHandler(this.BtnOK_MouseLeave);
             this.BtnOK.MouseMove += new System.Windows.Forms.MouseEventHandler(this.BtnOK_MouseMove);
             // 

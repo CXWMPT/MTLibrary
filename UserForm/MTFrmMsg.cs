@@ -278,7 +278,15 @@ namespace MTLibrary
         {
             TmrSystemTime.Enabled = false;
         }
+        private void BtnOK_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.OK;
+        }
 
+        private void BtnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
     }
 }
