@@ -10,7 +10,6 @@ namespace MTLibrary
 {
     public class AjaxHelper
     {  
-        
         //解析字符集00
         public static Encoding encoding = Encoding.UTF8;
         #region 
